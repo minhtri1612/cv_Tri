@@ -1,0 +1,225 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{vietnam} % Hỗ trợ tiếng Việt
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\geometry{a4paper, margin=2.5cm}
+\onehalfspacing
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Vietnamese-German University}
+\fancyhead[R]{Practical Training Report}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{titlepage}
+    % --- Đẩy logo lên sát góc trái và phải ---
+    \noindent
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{flushleft}
+            \vspace*{-1.5cm} % Kéo logo lên trên (số âm càng lớn càng lên cao)
+            \includegraphics[width=8.5cm]{vgu.png} 
+        \end{flushleft}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+        \begin{flushright}
+            \vspace*{-1.5cm} 
+            \includegraphics[width=8.5cm]{interspace.png} 
+        \end{flushright}
+    \end{minipage}
+
+    \centering % Sau đó mới căn giữa cho các phần nội dung bên dưới
+    \vspace{2.5cm}
+        
+    % --- Thông tin Trường ---
+    {\large Vietnamese--German University} \\
+    \vspace{0.3cm}
+    {\large \textbf{FACULTY OF COMPUTER SCIENCE AND ENGINEERING}} \\
+    
+    \vspace{3cm}
+    
+    % 5. Tên báo cáo [cite: 5]
+    \huge \textbf{PRACTICAL TRAINING REPORT}
+    
+    \vspace{2.5cm}
+    
+    % 6. Bảng thông tin [cite: 6]
+    \large
+    \begin{tabular}{ll}
+        \textbf{Company:} & Interspace\\
+        \textbf{Intern period:} & March 2\textsuperscript{nd}, 2026 -- June 26\textsuperscript{th}, 2026 \\
+        \textbf{Supervisor:} & Tung Van Hau \\
+        & \\
+        \textbf{Author:} & Tran Nguyen Minh Tri \\
+        \textbf{Program:} & Computer Science \\
+        \textbf{Student ID:} & 10422119 \\
+        \textbf{Intake:} & CSE2022 \\
+    \end{tabular}
+    
+    \vfill
+    
+    % 7. Địa điểm và thời gian [cite: 7]
+    \large 2026, Viet Nam
+    
+\end{titlepage}
+
+% ==================== PHẦN ADD THÊM (KHÔNG XÓA NỘI DUNG CŨ) ====================
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+% TODO: Write 1-page abstract summarizing context, objectives, methods, and key outcomes.
+
+\newpage
+\pagenumbering{arabic}
+
+% 1) Abstract & Introduction
+\section{Introduction}
+\subsection{Context and Motivation}
+% TODO: Cloud-native importance, Kubernetes in enterprise, why RKE2 instead of managed EKS.
+
+\subsection{Objectives}
+% TODO: State automation goals for infrastructure provisioning and cluster configuration.
+
+\subsection{Scope and Limitations}
+% TODO: Scope limited to AWS network design and RKE2 deployment.
+
+% Optional bridge section to improve flow
+\section{Methodology Overview}
+% TODO: Briefly explain workflow from design -> provisioning -> configuration -> validation.
+
+% 2) Theoretical Background / Tech Stack
+\section{Theoretical Background and Technology Stack}
+\subsection{Kubernetes and RKE2}
+\subsubsection{Kubernetes Core Architecture}
+% TODO
+\subsubsection{RKE2 Advantages and Differences}
+% TODO: Security hardening, lightweight operation, FIPS compliance references.
+
+\subsection{Infrastructure as Code with Terraform}
+\subsubsection{IaC Concepts}
+% TODO
+\subsubsection{Terraform Workflow and State Management}
+% TODO
+
+\subsection{Configuration Management with Ansible}
+\subsubsection{Playbooks, Roles, and Inventory}
+% TODO
+\subsubsection{Idempotency and Orchestration Flow}
+% TODO
+
+\subsection{AWS Cloud Infrastructure Fundamentals}
+\subsubsection{VPC, Subnets, Route Tables}
+% TODO
+\subsubsection{Security Groups and Network Access Control}
+% TODO
+
+% 3) System Architecture & Design
+\section{System Architecture and Design}
+\subsection{Network Topology}
+% TODO: Insert multi-VPC architecture explanation.
+\begin{figure}[H]
+    \centering
+    % TODO: Replace this box with your architecture diagram image.
+    \fbox{\parbox[c][6cm][c]{0.9\linewidth}{\centering Network Topology Diagram Placeholder}}
+    \caption{Multi-VPC Network Topology on AWS}
+    \label{fig:network-topology}
+\end{figure}
+
+\subsection{Cluster Architecture}
+\subsubsection{High Availability Design}
+% TODO: Server nodes and agent nodes.
+\subsubsection{Control Plane and Worker Node Communication}
+% TODO
+
+\subsection{Security Design}
+\subsubsection{mTLS and Certificate Model}
+% TODO
+\subsubsection{Port Restriction and Security Group Strategy}
+% TODO
+
+% 4) Implementation Details
+\section{Implementation Details}
+\subsection{Phase 1: Infrastructure Provisioning with Terraform}
+\subsubsection{VPC and Subnet Provisioning}
+% TODO
+\subsubsection{EC2, Load Balancer, and Supporting Resources}
+% TODO
+
+\begin{lstlisting}[language=hcl,caption={Example Terraform snippet for VPC provisioning},label={lst:terraform-vpc}]
+# TODO: Paste representative Terraform code snippet here.
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+}
+\end{lstlisting}
+
+\subsection{Phase 2: Cluster Configuration with Ansible}
+\subsubsection{Ansible Inventory Generated from Terraform Outputs}
+% TODO
+\subsubsection{Playbook Logic for RKE2 Installation and Node Join}
+% TODO
+
+\begin{lstlisting}[language=bash,caption={Example Ansible execution flow},label={lst:ansible-flow}]
+# TODO: Replace with your actual ansible-playbook commands and roles.
+ansible-playbook -i inventory.ini rke2_server.yml
+ansible-playbook -i inventory.ini rke2_agent.yml
+\end{lstlisting}
+
+\subsection{Troubleshooting and Debugging}
+\subsubsection{Issue 1}
+\textbf{Issue:} % TODO \\
+\textbf{Root Cause:} % TODO \\
+\textbf{Debug Process:} % TODO \\
+\textbf{Resolution:} % TODO \\
+\textbf{Lesson Learned:} % TODO
+
+\subsubsection{Issue 2}
+\textbf{Issue:} % TODO \\
+\textbf{Root Cause:} % TODO \\
+\textbf{Debug Process:} % TODO \\
+\textbf{Resolution:} % TODO \\
+\textbf{Lesson Learned:} % TODO
+
+% 5) Deployment Strategy & Extension
+\section{Deployment Strategy and Extension}
+\subsection{GitOps Workflow with ArgoCD}
+% TODO
+
+\subsection{Progressive Delivery with Argo Rollouts}
+\subsubsection{Canary Strategy}
+% TODO
+\subsubsection{Blue-Green Strategy}
+% TODO
+
+\subsection{Operational Considerations in Enterprise Environment}
+% TODO
+
+% 6) Conclusions & Future Work
+\section{Conclusions and Future Work}
+\subsection{Conclusion}
+% TODO: Summarize outcomes, automation benefits, time savings, and error reduction.
+
+\subsection{Future Work}
+\begin{itemize}[leftmargin=1.5em]
+    \item TODO: Integrate DataOps and MLOps pipelines.
+    \item TODO: Evaluate Service Mesh options (Cilium, Linkerd).
+    \item TODO: Explore Kubernetes Gateway API for traffic management.
+\end{itemize}
+
+\end{document}
